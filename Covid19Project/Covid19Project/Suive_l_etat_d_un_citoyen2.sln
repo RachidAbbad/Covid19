@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suive_l_etat_d_un_citoyen2", "Suive_l_etat_d_un_citoyen2.csproj", "{4715CF76-C611-4D7D-AAB7-7A5964D12851}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4715CF76-C611-4D7D-AAB7-7A5964D12851}.Debug.ActiveCfg = Debug|.NET
+		{4715CF76-C611-4D7D-AAB7-7A5964D12851}.Debug.Build.0 = Debug|.NET
+		{4715CF76-C611-4D7D-AAB7-7A5964D12851}.Release.ActiveCfg = Release|.NET
+		{4715CF76-C611-4D7D-AAB7-7A5964D12851}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

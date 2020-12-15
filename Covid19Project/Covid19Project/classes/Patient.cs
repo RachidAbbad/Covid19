@@ -1,23 +1,24 @@
 /***********************************************************************
- * Module:  AutoriteSanitaire.cs
+ * Module:  Patient.cs
  * Author:  BIG CHOIX
- * Purpose: Definition of the Class AutoriteSanitaire
+ * Purpose: Definition of the Class Patient
  ***********************************************************************/
 
 using System;
 
-public class Vaccinateur : Citoyen
+public class Patient : Citoyen
 {
-   public void Vaccination()
-   {
-      // TODO: implement
-   }
-   
    public void ChangerEtat()
    {
       // TODO: implement
    }
+   
+   public void MettreQuarantine()
+   {
+      // TODO: implement
+   }
 
-   private String NumAutorisation;
+   private string Etat;
+   private Symptomes Symptomes;
 
 }

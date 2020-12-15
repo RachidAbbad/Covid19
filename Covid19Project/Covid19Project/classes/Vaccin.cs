@@ -8,9 +8,9 @@ using System;
 
 public class Vaccin
 {
-   private String Nom;
-   private String PaysFabrication;
-   private String PeriodeVie;
-   private String AutreInfos;
+   private string Nom;
+   private string PaysFabrication;
+   private string PeriodeVie;
+   private string AutreInfos;
 
 }

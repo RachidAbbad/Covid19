@@ -1,6 +1,6 @@
 ﻿namespace Covid19Project
 {
-    partial class dashboard
+    partial class Form1
     {
         /// <summary>
         /// Variable nécessaire au concepteur.

@@ -8,10 +8,10 @@ using System;
 
 public class Symptomes
 {
-   private boolean Fievre;
-   private boolean TouxSeche;
-   private boolean Fatigue;
-   private Boolean DifficultesDeRespiration;
-   private boolean OppressionDePoitrine;
+   private bool Fievre;
+   private bool TouxSeche;
+   private bool Fatigue;
+   private bool DifficultesDeRespiration;
+   private bool OppressionDePoitrine;
 
 }

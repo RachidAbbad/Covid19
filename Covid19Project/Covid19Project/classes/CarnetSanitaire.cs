@@ -1,15 +1,14 @@
 /***********************************************************************
- * Module:  Test.cs
+ * Module:  CarnetSanitaire.cs
  * Author:  BIG CHOIX
- * Purpose: Definition of the Class Test
+ * Purpose: Definition of the Class CarnetSanitaire
  ***********************************************************************/
 
 using System;
 
-public class Test
+public class CarnetSanitaire
 {
-   private String Nom;
-   private Boolean Resultat;
-   private DateTime Date;
+   private bool VaccinFait;
+   private DateTime DateVaccination;
 
 }

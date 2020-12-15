@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{784762F2-A166-4819-8ED2-8C99EA94E298}</ProjectGuid>
+    <ProjectGuid>{6C19ADC8-45FE-4E97-B26A-27395E2BD9E9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Covid19Project</RootNamespace>
     <AssemblyName>Covid19Project</AssemblyName>
@@ -46,11 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dashboard.cs">
+    <Compile Include="classes\AutoriteSanitaire.cs" />
+    <Compile Include="classes\CarnetSanitaire.cs" />
+    <Compile Include="classes\Citoyen.cs" />
+    <Compile Include="classes\Laboratoire.cs" />
+    <Compile Include="classes\Patient.cs" />
+    <Compile Include="classes\Symptomes.cs" />
+    <Compile Include="classes\Test.cs" />
+    <Compile Include="classes\Vaccin.cs" />
+    <Compile Include="classes\Vaccinateur.cs" />
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dashboard.Designer.cs">
-      <DependentUpon>dashboard.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

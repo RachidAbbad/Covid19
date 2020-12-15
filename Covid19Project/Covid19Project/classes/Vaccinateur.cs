@@ -1,19 +1,23 @@
 /***********************************************************************
- * Module:  Test.cs
+ * Module:  AutoriteSanitaire.cs
  * Author:  BIG CHOIX
- * Purpose: Definition of the Class Test
+ * Purpose: Definition of the Class AutoriteSanitaire
  ***********************************************************************/
 
 using System;
 
-public class Laboratoire
+public class Vaccinateur : Citoyen
 {
+   public void Vaccination()
+   {
+      // TODO: implement
+   }
+   
    public void ChangerEtat()
    {
       // TODO: implement
    }
 
-   private String Nom;
-   private String Location;
+   private string NumAutorisation;
 
 }

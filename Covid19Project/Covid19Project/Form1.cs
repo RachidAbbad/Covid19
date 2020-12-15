@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Covid19Project
 {
-    public partial class dashboard : Form
+    public partial class Form1 : Form
     {
-        public dashboard()
+        public Form1()
         {
             InitializeComponent();
         }

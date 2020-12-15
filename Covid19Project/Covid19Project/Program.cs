@@ -16,7 +16,7 @@ namespace Covid19Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new dashboard());
+            Application.Run(new Form1());
         }
     }
 }

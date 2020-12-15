@@ -8,12 +8,12 @@ using System;
 
 public class Citoyen
 {
-   private String Nom;
-   private String Prenom;
+   private string Nom;
+   private string Prenom;
    private int Age;
-   private String Sexe;
-   private String Cin;
-   private String Adresse;
-   private String NumTel;
+   private string Sexe;
+   private string Cin;
+   private string Adresse;
+   private string NumTel;
 
 }

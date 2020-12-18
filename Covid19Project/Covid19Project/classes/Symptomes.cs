@@ -13,5 +13,4 @@ public class Symptomes
    private bool Fatigue;
    private bool DifficultesDeRespiration;
    private bool OppressionDePoitrine;
-
 }

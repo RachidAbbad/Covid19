@@ -8,14 +8,53 @@ using System;
 
 public class AutoriteSanitaire
 {
-   public Vaccin ImporteVaccin()
+    //Attributs
+    private int NbCadreMedicaux;
+    private int NbMedicament;
+    private int NbVaccin;
+
+    //Getters
+    public int getNbCadreMedicaux()
+    {
+        return NbCadreMedicaux;
+    }
+    public int getNbMedicament()
+    {
+        return NbMedicament;
+    }
+    public int getNbVaccin()
+    {
+        return NbVaccin;
+    }
+
+    //setters
+    public void setNbCadreMedicaux(int _NbCadreMedicaux)
+    {
+        NbCadreMedicaux = _NbCadreMedicaux;
+    }
+    public void setNbMedicament(int _NbMedicament)
+    {
+        NbMedicament = _NbMedicament;
+    }
+    public void setNbVaccin(int _NbVaccin)
+    {
+        NbVaccin = _NbVaccin;
+    }
+
+    //Methods
+    public Vaccin ImporteVaccin(int _nbVaccin, string _pays, string _nomVaccin, string _periodeVie, string _description)
+    {
+        Vaccin vaccin = new Vaccin(_nomVaccin, _pays, _periodeVie, _desicription);
+        NbVaccin = _nbVaccin;
+        return vaccin;
+    }
+    public Vaccin ImporteVaccin(int _nbVaccin, string _pays, string _nomVaccin, string _periodeVie)
    {
-      // TODO: implement
-      return null;
+        Vaccin vaccin = new Vaccin(_nomVaccin,_pays,_periodeVie);
+        NbVaccin = _nbVaccin;
+        return vaccin;
    }
 
-   private int NbCadreMedicaux;
-   private int NbMedicament;
-   private int NbVaccin;
+
 
 }

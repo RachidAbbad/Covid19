@@ -55,14 +55,17 @@
     <Compile Include="classes\Test.cs" />
     <Compile Include="classes\Vaccin.cs" />
     <Compile Include="classes\Vaccinateur.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Covid19Traqueur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Covid19Traqueur.Designer.cs">
+      <DependentUpon>Covid19Traqueur.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Covid19Traqueur.resx">
+      <DependentUpon>Covid19Traqueur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

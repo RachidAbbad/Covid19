@@ -44,7 +44,7 @@ public class AutoriteSanitaire
     //Methods
     public Vaccin ImporteVaccin(int _nbVaccin, string _pays, string _nomVaccin, string _periodeVie, string _description)
     {
-        Vaccin vaccin = new Vaccin(_nomVaccin, _pays, _periodeVie, _desicription);
+        Vaccin vaccin = new Vaccin(_nomVaccin, _pays, _periodeVie, _description);
         NbVaccin = _nbVaccin;
         return vaccin;
     }

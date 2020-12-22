@@ -42,9 +42,13 @@ public class AutoriteSanitaire
     }
 
     //Methods
-    public Vaccin ImporteVaccin(int _nbVaccin, string _pays, string _nomVaccin, string _periodeVie, string _description)
+    public Vaccin ImporteVaccin(int _nbVaccin, string _pays, string _nomVaccin, string _periodeVie, string _autreInfos)
     {
+<<<<<<< Updated upstream
         Vaccin vaccin = new Vaccin(_nomVaccin, _pays, _periodeVie, _desicription);
+=======
+        Vaccin vaccin = new Vaccin(_nomVaccin, _pays, _periodeVie, _autreInfos);
+>>>>>>> Stashed changes
         NbVaccin = _nbVaccin;
         return vaccin;
     }

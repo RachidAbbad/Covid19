@@ -2,6 +2,10 @@
 
 Dans ce projet avec Mr.Hachmoud ```@AdilHachmoud``` nous allons travailler sur la simulation d'un système d'information qui va de permettre aux autorités sanitaires d’assurer le suivi et le contrôle de la propagation de la pandémie covid 19.
 
+## Diagramme de Classe
+![Diagramme de Classe](https://raw.githubusercontent.com/Rachid-Abbad/C-Sharp-Projects/main/diagClasses.png?token=AR4ZSCKVIXHJZVDY7R6LCIK74HQJ2)
+## Diagramme d'état-transition
+![Diagramme de Classe](https://raw.githubusercontent.com/Rachid-Abbad/C-Sharp-Projects/main/Abbad_Rachid_GL_DiagEtatTransition.png?token=AR4ZSCMJVXTW53LMASTTT2C74HQEO)
 ## Outils utilisés
 
 - VS 2017

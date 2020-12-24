@@ -8,12 +8,22 @@ using System;
 
 public class Laboratoire
 {
-   public void ChangerEtat()
-   {
-      // TODO: implement
-   }
-
    private string Nom;
    private string Location;
-
+    public void setNom(string _nom)
+    {
+        Nom = _nom;
+    }
+    public void setLocation(string _Location)
+    {
+        Location = _Location;
+    }
+    public string getNom()
+    {
+        return Nom;
+    }
+    public string getLocation()
+    {
+        return Location;
+    }
 }

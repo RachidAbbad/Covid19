@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.22.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,26 +47,57 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ajouterVaccine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ajouterVaccine.Designer.cs">
+      <DependentUpon>ajouterVaccine.cs</DependentUpon>
+    </Compile>
     <Compile Include="classes\AutoriteSanitaire.cs" />
     <Compile Include="classes\CarnetSanitaire.cs" />
     <Compile Include="classes\Citoyen.cs" />
     <Compile Include="classes\Laboratoire.cs" />
     <Compile Include="classes\Patient.cs" />
+    <Compile Include="classes\Suspect.cs" />
     <Compile Include="classes\Symptomes.cs" />
     <Compile Include="classes\Test.cs" />
     <Compile Include="classes\Vaccin.cs" />
+<<<<<<< Updated upstream
     <Compile Include="classes\Vaccinateur.cs" />
+=======
+>>>>>>> Stashed changes
     <Compile Include="Covid19Traqueur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Covid19Traqueur.Designer.cs">
       <DependentUpon>Covid19Traqueur.cs</DependentUpon>
+<<<<<<< Updated upstream
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Covid19Traqueur.resx">
       <DependentUpon>Covid19Traqueur.cs</DependentUpon>
     </EmbeddedResource>
+=======
+    </Compile>
+    <Compile Include="faireTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="faireTest.Designer.cs">
+      <DependentUpon>faireTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ajouterVaccine.resx">
+      <DependentUpon>ajouterVaccine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Covid19Traqueur.resx">
+      <DependentUpon>Covid19Traqueur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="faireTest.resx">
+      <DependentUpon>faireTest.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> Stashed changes
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

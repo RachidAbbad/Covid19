@@ -2,26 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-<<<<<<< Updated upstream
-=======
 using System.Data.SqlClient;
->>>>>>> Stashed changes
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-<<<<<<< Updated upstream
-=======
 using MySql.Data.MySqlClient;
->>>>>>> Stashed changes
 
 namespace Covid19Project
 {
     public partial class Form1 : Form
     {
-<<<<<<< Updated upstream
-=======
         private string serveur = "localhost";
         private string user = "root";
         private string pass = "";
@@ -43,13 +35,10 @@ namespace Covid19Project
                 MessageBox.Show(ex.Message);
             }
         }
->>>>>>> Stashed changes
         public Form1()
         {
             InitializeComponent();
         }
-<<<<<<< Updated upstream
-=======
         public void connection()
         {
             cnn.ConnectionString = @"Data Source=DESKTOP-10LGI3U\SQLEXPRESS;Initial Catalog = dbTest; User ID =sa; Password =password";
@@ -63,71 +52,47 @@ namespace Covid19Project
                 MessageBox.Show(ex.Message);
             }
         }
->>>>>>> Stashed changes
 
         private void Form1_Load(object sender, EventArgs e)
         {
             patientPanel.Visible = false;
             suspectPanel.Visible = false;
-<<<<<<< Updated upstream
-            vaccinateurPanel.Visible = false;
-=======
             retabliePanel.Visible = false;
             citoyenPanel.Visible = true;
             vaccinePanel.Visible = false;
->>>>>>> Stashed changes
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             patientPanel.Visible = false;
             suspectPanel.Visible = false;
-<<<<<<< Updated upstream
-            vaccinateurPanel.Visible = false;
-            citoyenPanel.Visible = true;
-=======
             retabliePanel.Visible = false;
             citoyenPanel.Visible = true;
             vaccinePanel.Visible = false;
->>>>>>> Stashed changes
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             patientPanel.Visible = false;
             suspectPanel.Visible = true;
-<<<<<<< Updated upstream
-            vaccinateurPanel.Visible = false;
-            citoyenPanel.Visible = false;
-=======
             retabliePanel.Visible = false;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = false;
->>>>>>> Stashed changes
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             patientPanel.Visible = true;
             suspectPanel.Visible = false;
-<<<<<<< Updated upstream
-            vaccinateurPanel.Visible = false;
-            citoyenPanel.Visible = false;
-=======
             retabliePanel.Visible = false;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = false;
->>>>>>> Stashed changes
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             patientPanel.Visible = false;
             suspectPanel.Visible = false;
-<<<<<<< Updated upstream
-            citoyenPanel.Visible = false;
-            vaccinateurPanel.Visible = true;
-=======
             retabliePanel.Visible = true;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = false;
@@ -168,7 +133,6 @@ namespace Covid19Project
         {
             faireTest test = new faireTest(/*cin*/);
             test.Show();
->>>>>>> Stashed changes
         }
     }
 }

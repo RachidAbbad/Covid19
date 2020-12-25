@@ -49,10 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-<<<<<<< Updated upstream
-            this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-=======
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.retabliePanel = new System.Windows.Forms.Panel();
             this.vaccinePanel = new System.Windows.Forms.Panel();
@@ -60,7 +56,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button17 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
->>>>>>> Stashed changes
             this.menuPanel.SuspendLayout();
             this.citoyenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -302,67 +297,16 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Liste des Patients";
             // 
-<<<<<<< Updated upstream
-            // button11
-            // 
-            this.button11.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(635, 87);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(153, 60);
-            this.button11.TabIndex = 6;
-            this.button11.Text = "Ajouter Patient";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(635, 265);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(153, 60);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Supprimer Patient";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(635, 177);
-=======
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.Location = new System.Drawing.Point(638, 46);
->>>>>>> Stashed changes
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(153, 60);
             this.button13.TabIndex = 4;
             this.button13.Text = "Faire Test PCR";
             this.button13.UseVisualStyleBackColor = true;
-<<<<<<< Updated upstream
-            // 
-            // vaccinateurPanel
-            // 
-            this.vaccinateurPanel.AllowDrop = true;
-            this.vaccinateurPanel.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.vaccinateurPanel.Controls.Add(this.dataGridView4);
-            this.vaccinateurPanel.Controls.Add(this.label5);
-            this.vaccinateurPanel.Controls.Add(this.button14);
-            this.vaccinateurPanel.Controls.Add(this.button15);
-            this.vaccinateurPanel.Location = new System.Drawing.Point(217, 114);
-            this.vaccinateurPanel.Name = "vaccinateurPanel";
-            this.vaccinateurPanel.Size = new System.Drawing.Size(803, 433);
-            this.vaccinateurPanel.TabIndex = 10;
-            // 
-            // dataGridView4
-            // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(13, 46);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(613, 372);
-            this.dataGridView4.TabIndex = 9;
-=======
             this.button13.Click += new System.EventHandler(this.button13_Click);
->>>>>>> Stashed changes
             // 
             // label5
             // 
@@ -376,8 +320,6 @@
             // 
             // dataGridView4
             // 
-<<<<<<< Updated upstream
-=======
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Location = new System.Drawing.Point(13, 46);
             this.dataGridView4.Name = "dataGridView4";
@@ -448,21 +390,11 @@
             this.button7.Text = "Ajouter au liste du suspects";
             this.button7.UseVisualStyleBackColor = true;
             // 
->>>>>>> Stashed changes
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 544);
-<<<<<<< Updated upstream
-            this.Controls.Add(this.vaccinateurPanel);
-            this.Controls.Add(this.citoyenPanel);
-            this.Controls.Add(this.suspectPanel);
-            this.Controls.Add(this.patientPanel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel2);
-            this.Controls.Add(this.menuPanel);
-=======
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.menuPanel);
@@ -471,7 +403,6 @@
             this.Controls.Add(this.vaccinePanel);
             this.Controls.Add(this.retabliePanel);
             this.Controls.Add(this.citoyenPanel);
->>>>>>> Stashed changes
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -521,10 +452,6 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label5;
-<<<<<<< Updated upstream
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button15;
-=======
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Panel retabliePanel;
         private System.Windows.Forms.Button button16;
@@ -533,7 +460,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button7;
->>>>>>> Stashed changes
     }
 }
 

@@ -1,0 +1,233 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using MySql.Data.MySqlClient;
+
+namespace Covid19Project
+{
+    public partial class Form1 : Form
+    {
+        private string serveur = "127.0.0.1";
+        private string user = "root";
+        private string pass = "";
+        private string db = "covid19";
+        private MySqlConnection cnn ;
+        MySqlCommand cmd;
+        MySqlDataAdapter sda;
+
+        public void Connection()
+        {
+            string StringConn = "server="+ serveur + ";database="+ db + ";uid="+ user + ";pwd="+ pass +";";
+            cnn = new MySqlConnection(StringConn);
+            try
+            {
+                cnn.Open();
+                cnn.Close();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            init();
+        }
+
+        private void init()
+        {
+            patientPanel.Visible = false;
+            suspectPanel.Visible = false;
+            retabliePanel.Visible = false;
+            citoyenPanel.Visible = true;
+            vaccinePanel.Visible = false;
+            Connection();
+            fillDataGrid(citoyenDataGrid,"citoyen");
+            fillDataGrid(patientDataGrid,"patient");
+            fillDataGrid(retablieDataGrid,"retablie");
+            fillDataGrid(suspectDataGrid,"suspect");
+            fillDataGrid(vaccineDataGrid,"vaccine");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            patientPanel.Visible = false;
+            suspectPanel.Visible = false;
+            retabliePanel.Visible = false;
+            citoyenPanel.Visible = true;
+            vaccinePanel.Visible = false;
+            fillDataGrid(citoyenDataGrid, "citoyen");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            patientPanel.Visible = false;
+            suspectPanel.Visible = true;
+            retabliePanel.Visible = false;
+            citoyenPanel.Visible = false;
+            vaccinePanel.Visible = false;
+            fillDataGrid(suspectDataGrid, "suspect");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            patientPanel.Visible = true;
+            suspectPanel.Visible = false;
+            retabliePanel.Visible = false;
+            citoyenPanel.Visible = false;
+            vaccinePanel.Visible = false;
+            fillDataGrid(patientDataGrid, "patient");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            patientPanel.Visible = false;
+            suspectPanel.Visible = false;
+            retabliePanel.Visible = true;
+            citoyenPanel.Visible = false;
+            vaccinePanel.Visible = false;
+            fillDataGrid(retablieDataGrid, "retablie");
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            patientPanel.Visible = false;
+            suspectPanel.Visible = false;
+            retabliePanel.Visible = false;
+            citoyenPanel.Visible = false;
+            vaccinePanel.Visible = true;
+            fillDataGrid(vaccineDataGrid, "vaccine");
+        }
+
+        public void fillDataGrid(DataGridView d,string nameTable)
+        {
+            if(cnn.State.ToString()=="open")
+                   cnn.Open();
+            if(d == citoyenDataGrid)
+            {
+                string cmdString = "select * from " + nameTable;
+                cmd = new MySqlCommand(cmdString, cnn);
+                sda = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                d.DataSource = dt;
+                cnn.Close();
+            }
+            else
+            {
+                string cmdString = "select * from " + nameTable + ",citoyen WHERE citoyen.cinCitoyen=" + nameTable + ".cin"+nameTable;
+                cmd = new MySqlCommand(cmdString, cnn);
+                sda = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                d.DataSource = dt;
+                
+            }
+            cnn.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string cin = null;
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < citoyenDataGrid.Rows.Count; i++)
+            {
+                dr = citoyenDataGrid.Rows[i];
+                if (dr.Selected == true)
+                {
+                    cin = citoyenDataGrid.Rows[i].Cells[0].Value.ToString();
+                }
+            }
+            ajouterVaccine ajout = new ajouterVaccine(cin,cnn);
+            ajout.Show();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string cin = null;
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < suspectDataGrid.Rows.Count; i++)
+            {
+                dr = suspectDataGrid.Rows[i];
+                if (dr.Selected == true)
+                {
+                    cin = suspectDataGrid.Rows[i].Cells[1].Value.ToString();
+                }
+            }
+            faireTest test = new faireTest(cin,cnn,"suspect");
+            test.Show();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            string cin = null;
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < patientDataGrid.Rows.Count; i++)
+            {
+                dr = patientDataGrid.Rows[i];
+                if (dr.Selected == true)
+                {
+                    cin = patientDataGrid.Rows[i].Cells[0].Value.ToString();
+                }
+            }
+            faireTest test = new faireTest(cin,cnn,"patient");
+            test.Show();
+            
+        }
+
+        private void ajoutVaccineVP_Click(object sender, EventArgs e)
+        {
+            ajouterVaccine ajout = new ajouterVaccine(cnn);
+            ajout.Show();
+        }
+
+        //Ajout au list du suspects (Changer l'etat)
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string cin = null;
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < citoyenDataGrid.Rows.Count; i++)
+            {
+                dr = citoyenDataGrid.Rows[i];
+                if (dr.Selected == true)
+                {
+                    cin = citoyenDataGrid.Rows[i].Cells[0].Value.ToString();
+                }
+            }
+            try
+            {
+                cnn.Open();
+                cmd.CommandText = "INSERT INTO suspect(cinsuspect) VALUES ('" + cin + "');";
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Le citoyen a été ajouté à la liste des suspects");
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Actualiser les dataGrid contenu
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            fillDataGrid(citoyenDataGrid, "citoyen");
+            fillDataGrid(patientDataGrid, "patient");
+            fillDataGrid(retablieDataGrid, "retablie");
+            fillDataGrid(suspectDataGrid, "suspect");
+            fillDataGrid(vaccineDataGrid, "vaccine");
+        }
+    }
+}

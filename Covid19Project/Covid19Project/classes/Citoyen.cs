@@ -27,6 +27,7 @@ public class Citoyen
         Cin = _Cin;
         Adresse = _Adresse;
         NumTel = _NumTel;
+
     }
     public Citoyen(string _Nom, string _Prenom, int _Age, string _Sexe, string _Cin, string _Adresse, string _NumTel, string _Etat)
     {

@@ -125,7 +125,22 @@ namespace Covid19Project
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 d.DataSource = dt;
-                
+                for (int i = 0; i < citoyenDataGrid.Rows.Count; i++)
+                {
+                    if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Faible")
+                    {
+                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Green;
+                    }
+                    else if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Moyen")
+                    {
+                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Orange;
+                    }
+                    else if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Haute")
+                    {
+                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Red;
+                    }
+
+                }
                 cnn.Close();
             }
             else

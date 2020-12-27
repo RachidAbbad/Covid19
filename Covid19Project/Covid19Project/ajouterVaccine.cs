@@ -68,7 +68,9 @@ namespace Covid19Project
                 {
                     cnn.Open();
                     cmd.CommandText = "INSERT INTO vaccine(cinVaccine,nomVaccin,dateVaccination) " +
-                        "Values('" + cin + "', '"+ vaccinCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "'); ";
+                        "Values('" + cin + "', '"+ vaccinCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "');" +
+                        "Update carnetSanitaire set  faitvaccin = true,datevaccination ='" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' WHERE cincitoyen='" + cin + "';" +
+                        "update citoyen set gravite = 'Faible' Where cinciroyen = '"+cin+"';";
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Le citoyen a été ajouté à la liste des vacciné");
                     cnn.Close();

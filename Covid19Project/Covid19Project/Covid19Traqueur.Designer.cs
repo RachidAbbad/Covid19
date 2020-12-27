@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.citoyenPanel = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.citoyenDataGrid = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -201,6 +202,7 @@
             this.citoyenPanel.AllowDrop = true;
             this.citoyenPanel.BackColor = System.Drawing.Color.MediumTurquoise;
             this.citoyenPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.citoyenPanel.Controls.Add(this.button8);
             this.citoyenPanel.Controls.Add(this.button7);
             this.citoyenPanel.Controls.Add(this.citoyenDataGrid);
             this.citoyenPanel.Controls.Add(this.label3);
@@ -209,6 +211,17 @@
             this.citoyenPanel.Name = "citoyenPanel";
             this.citoyenPanel.Size = new System.Drawing.Size(1003, 469);
             this.citoyenPanel.TabIndex = 7;
+            // 
+            // button8
+            // 
+            this.button8.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(843, 259);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(153, 60);
+            this.button8.TabIndex = 11;
+            this.button8.Text = "Afficher le carnet sanitaire";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -228,6 +241,7 @@
             this.citoyenDataGrid.Name = "citoyenDataGrid";
             this.citoyenDataGrid.Size = new System.Drawing.Size(824, 372);
             this.citoyenDataGrid.TabIndex = 9;
+            this.citoyenDataGrid.SelectionChanged += new System.EventHandler(this.ActivateButtons);
             // 
             // label3
             // 
@@ -259,6 +273,7 @@
             this.suspectDataGrid.Name = "suspectDataGrid";
             this.suspectDataGrid.Size = new System.Drawing.Size(824, 372);
             this.suspectDataGrid.TabIndex = 9;
+            this.suspectDataGrid.SelectionChanged += new System.EventHandler(this.ActivateButtons);
             // 
             // label2
             // 
@@ -312,6 +327,7 @@
             this.patientDataGrid.Name = "patientDataGrid";
             this.patientDataGrid.Size = new System.Drawing.Size(824, 372);
             this.patientDataGrid.TabIndex = 9;
+            this.patientDataGrid.SelectionChanged += new System.EventHandler(this.ActivateButtons);
             // 
             // label4
             // 
@@ -479,6 +495,7 @@
         private System.Windows.Forms.Button ajoutVaccineVP;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button8;
     }
 }
 

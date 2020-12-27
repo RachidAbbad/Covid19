@@ -53,6 +53,12 @@
     <Compile Include="ajouterVaccine.Designer.cs">
       <DependentUpon>ajouterVaccine.cs</DependentUpon>
     </Compile>
+    <Compile Include="carnetSanitaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="carnetSanitaire.Designer.cs">
+      <DependentUpon>carnetSanitaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="classes\AutoriteSanitaire.cs" />
     <Compile Include="classes\CarnetSanitaire.cs" />
     <Compile Include="classes\Citoyen.cs" />
@@ -78,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ajouterVaccine.resx">
       <DependentUpon>ajouterVaccine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="carnetSanitaire.resx">
+      <DependentUpon>carnetSanitaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Covid19Traqueur.resx">
       <DependentUpon>Covid19Traqueur.cs</DependentUpon>

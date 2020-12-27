@@ -20,10 +20,10 @@ namespace Covid19Project
         MySqlCommand cmd;
         MySqlDataAdapter sda;
         private string Etat;
-        public faireTest(string _cin, MySqlConnection _cnn,string _etat)
+        public faireTest(string _cin,MySqlConnection _cnn,string _etat)
         {
-            InitializeComponent();
-            cin = _cin;
+            InitializeComponent();                                                      
+            cin = _cin; 
             typeTestCombobox.Text = cin;
             cnn = _cnn;
             resultatTestCombobox.Text ="---Choisir Résultat---";
@@ -68,7 +68,8 @@ namespace Covid19Project
                     {
                         cnn.Open();
                         cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '"+typeTestCombobox.Text+ "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', FALSE);" +
-                            "Delete From Suspect where cinsuspect = '" + cin + "';";
+                            "Delete From Suspect where cinsuspect = '" + cin + "';" +
+                            "update citoyen set gravite = 'Faible' Where cincitoyen = '" + cin + "';";
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Le test a été ajouté avec succès \n Le suspect n'est pas porteur du virus, il sera supprimé de la liste des suspects .");
                     
@@ -78,7 +79,8 @@ namespace Covid19Project
                         cnn.Open();
                         cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + typeTestCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', TRUE);" +
                             "Insert into patient(cinpatient) values('" + cin + "');" +
-                            "Delete From Suspect where cinsuspect = '" + cin + "';";
+                            "Delete From Suspect where cinsuspect = '" + cin + "';" +
+                            "update citoyen set gravite = 'Haute' Where cincitoyen = '" + cin + "';";
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Le test a été ajouté avec succès \n Le suspect est passé à la liste des patients .");
                         cnn.Close();
@@ -91,7 +93,8 @@ namespace Covid19Project
                         cnn.Open();
                         cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + typeTestCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', FALSE);" +
                             "Delete From patient where cinpatient = '" + cin + "';" +
-                            "Insert into retablie(cinretablie,dateretablie) values('"+cin+"','"+ dateTimePicker1.Value.ToString("yyyy-MM-dd") + "');";
+                            "Insert into retablie(cinretablie,dateretablie) values('"+cin+"','"+ dateTimePicker1.Value.ToString("yyyy-MM-dd") + "');" +
+                            "update citoyen set gravite = 'Faible' Where cincitoyen = '" + cin + "';";
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Le test a été ajouté avec succès \n Le patient n'est pas porteur du virus, il sera ajouté au liste des Rétablie.");
 
@@ -116,4 +119,3 @@ namespace Covid19Project
         }
     }
 }
-

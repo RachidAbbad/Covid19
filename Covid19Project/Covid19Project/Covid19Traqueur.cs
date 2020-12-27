@@ -59,6 +59,7 @@ namespace Covid19Project
             fillDataGrid(retablieDataGrid,"retablie");
             fillDataGrid(suspectDataGrid,"suspect");
             fillDataGrid(vaccineDataGrid,"vaccine");
+            DisableButtons();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -111,10 +112,11 @@ namespace Covid19Project
             fillDataGrid(vaccineDataGrid, "vaccine");
         }
 
+        //Afficher les données de BD en DatagridView
         public void fillDataGrid(DataGridView d,string nameTable)
         {
-            if(cnn.State.ToString()=="open")
-                   cnn.Open();
+            if(cnn.State.ToString() == "close")
+            cnn.Open();
             if(d == citoyenDataGrid)
             {
                 string cmdString = "select * from " + nameTable;
@@ -123,6 +125,7 @@ namespace Covid19Project
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 d.DataSource = dt;
+                
                 cnn.Close();
             }
             else
@@ -209,7 +212,8 @@ namespace Covid19Project
             try
             {
                 cnn.Open();
-                cmd.CommandText = "INSERT INTO suspect(cinsuspect) VALUES ('" + cin + "');";
+                cmd.CommandText = "INSERT INTO suspect(cinsuspect) VALUES ('" + cin + "');" +
+                    "update citoyen set gravite = 'Moyen' Where cincitoyen = '"+cin+"'";
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Le citoyen a été ajouté à la liste des suspects");
                 cnn.Close();
@@ -228,6 +232,74 @@ namespace Covid19Project
             fillDataGrid(retablieDataGrid, "retablie");
             fillDataGrid(suspectDataGrid, "suspect");
             fillDataGrid(vaccineDataGrid, "vaccine");
+        }
+
+        //Desiactiver La MOdificattion en DataGridView
+        private void DisableEditData()
+        {
+            patientDataGrid.ReadOnly = true;
+            citoyenDataGrid.ReadOnly = true;
+            retablieDataGrid.ReadOnly = true;
+            suspectDataGrid.ReadOnly = true;
+            vaccineDataGrid.ReadOnly = true;
+        }
+
+        private void DisableButtons()
+        {
+            button7.Enabled = false;
+            button5.Enabled = false;
+            button8.Enabled = false;
+            button10.Enabled = false;
+            button13.Enabled = false;
+            button6.Enabled = false;
+        }
+
+        //Afficher le carnet sanitaire de citoyen
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string cin = null;
+            string faitvaccin = null;
+            string DateVaccination = null;
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < citoyenDataGrid.Rows.Count; i++)
+            {
+                dr = citoyenDataGrid.Rows[i];
+                if (dr.Selected == true)
+                {
+                    cin = citoyenDataGrid.Rows[i].Cells[0].Value.ToString();
+                    cnn.Open();
+                    string cmdString = "select faitvaccin,datevaccination from carnetsanitaire where cincitoyen ='"+cin+"';";
+                    cmd = new MySqlCommand(cmdString, cnn);
+                    sda = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    cnn.Close();
+                    faitvaccin = dt.Rows[0]["faitvaccin"].ToString();
+                    DateVaccination = dt.Rows[0]["datevaccination"].ToString();
+                }
+            }
+            carnetSanitaire carnet = new carnetSanitaire(cin, faitvaccin, DateVaccination);
+            carnet.Show();
+        }
+
+        private void ActivateButtons(object sender, EventArgs e)
+        {
+            if(citoyenDataGrid.SelectedRows.Count > 0)
+            {
+                button7.Enabled = true;
+                button5.Enabled = true;
+                button8.Enabled = true;
+            }
+            if (patientDataGrid.SelectedRows.Count > 0)
+            {
+                button13.Enabled = true;
+                button6.Enabled = true;
+            }
+            if (suspectDataGrid.SelectedRows.Count > 0)
+            {
+                button10.Enabled = true;
+            }
+
         }
     }
 }

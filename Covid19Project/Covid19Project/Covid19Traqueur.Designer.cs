@@ -57,7 +57,6 @@
             this.vaccinePanel = new System.Windows.Forms.Panel();
             this.vaccineDataGrid = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.ajoutVaccineVP = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.citoyenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.citoyenDataGrid)).BeginInit();
@@ -388,7 +387,6 @@
             this.vaccinePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.vaccinePanel.Controls.Add(this.vaccineDataGrid);
             this.vaccinePanel.Controls.Add(this.label6);
-            this.vaccinePanel.Controls.Add(this.ajoutVaccineVP);
             this.vaccinePanel.Location = new System.Drawing.Point(220, 78);
             this.vaccinePanel.Name = "vaccinePanel";
             this.vaccinePanel.Size = new System.Drawing.Size(1003, 469);
@@ -399,7 +397,7 @@
             this.vaccineDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.vaccineDataGrid.Location = new System.Drawing.Point(13, 46);
             this.vaccineDataGrid.Name = "vaccineDataGrid";
-            this.vaccineDataGrid.Size = new System.Drawing.Size(825, 372);
+            this.vaccineDataGrid.Size = new System.Drawing.Size(969, 372);
             this.vaccineDataGrid.TabIndex = 9;
             // 
             // label6
@@ -412,17 +410,6 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Liste des Vaccinés";
             // 
-            // ajoutVaccineVP
-            // 
-            this.ajoutVaccineVP.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ajoutVaccineVP.Location = new System.Drawing.Point(844, 47);
-            this.ajoutVaccineVP.Name = "ajoutVaccineVP";
-            this.ajoutVaccineVP.Size = new System.Drawing.Size(153, 60);
-            this.ajoutVaccineVP.TabIndex = 6;
-            this.ajoutVaccineVP.Text = "Ajouter Vacciné";
-            this.ajoutVaccineVP.UseVisualStyleBackColor = true;
-            this.ajoutVaccineVP.Click += new System.EventHandler(this.ajoutVaccineVP_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,11 +418,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.menuPanel);
-            this.Controls.Add(this.patientPanel);
             this.Controls.Add(this.vaccinePanel);
             this.Controls.Add(this.retabliePanel);
             this.Controls.Add(this.citoyenPanel);
             this.Controls.Add(this.suspectPanel);
+            this.Controls.Add(this.patientPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -492,7 +479,6 @@
         private System.Windows.Forms.Panel vaccinePanel;
         private System.Windows.Forms.DataGridView vaccineDataGrid;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button ajoutVaccineVP;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;

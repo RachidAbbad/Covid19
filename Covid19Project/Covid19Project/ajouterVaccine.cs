@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Covid19Project.classes;
 using MySql.Data.MySqlClient;
 
 namespace Covid19Project
@@ -19,6 +20,7 @@ namespace Covid19Project
         private MySqlConnection cnn;
         MySqlCommand cmd;
         MySqlDataAdapter sda;
+        Vaccine vaccine;
 
         public ajouterVaccine(MySqlConnection _cnn)
         {
@@ -27,13 +29,14 @@ namespace Covid19Project
             fillVaccinCombobox();
         }
 
-        public ajouterVaccine(string _cin, MySqlConnection _cnn)
+        public ajouterVaccine(Citoyen _citoyen,MySqlConnection _cnn)
         { 
             InitializeComponent();
-            cin = _cin;
+            cin = _citoyen.getCin();
             cnn = _cnn;
             cinCombobox.Text = cin;
             fillVaccinCombobox();
+            vaccine = new Vaccine(_citoyen.getNom(),_citoyen.getPrenom(),_citoyen.getAge(),_citoyen.getSexe(),_citoyen.getCin(),_citoyen.getAdresse(),_citoyen.getNumTel());
         }
 
         public void fillVaccinCombobox()
@@ -70,9 +73,12 @@ namespace Covid19Project
                     cmd.CommandText = "INSERT INTO vaccine(cinVaccine,nomVaccin,dateVaccination) " +
                         "Values('" + cin + "', '"+ vaccinCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "');" +
                         "Update carnetSanitaire set  faitvaccin = true,datevaccination ='" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' WHERE cincitoyen='" + cin + "';" +
-                        "update citoyen set gravite = 'Faible' Where cinciroyen = '"+cin+"';";
+                        "update citoyen set gravite = 'Faible' Where cincitoyen = '"+cin+"';" +
+                        "DELETE FROM SUSPECT WHERE cinsuspect = '"+cin+"'";
                     cmd.ExecuteNonQuery();
+                    vaccine.setDateVaccination(dateTimePicker1.Value);
                     MessageBox.Show("Le citoyen a été ajouté à la liste des vacciné");
+                    this.Close();
                     cnn.Close();
                 }
                 catch (Exception ex)

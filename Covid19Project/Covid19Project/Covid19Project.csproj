@@ -64,10 +64,12 @@
     <Compile Include="classes\Citoyen.cs" />
     <Compile Include="classes\Laboratoire.cs" />
     <Compile Include="classes\Patient.cs" />
+    <Compile Include="classes\Retablie.cs" />
     <Compile Include="classes\Suspect.cs" />
     <Compile Include="classes\Symptomes.cs" />
     <Compile Include="classes\Test.cs" />
     <Compile Include="classes\Vaccin.cs" />
+    <Compile Include="classes\Vaccine.cs" />
     <Compile Include="Covid19Traqueur.cs">
       <SubType>Form</SubType>
     </Compile>

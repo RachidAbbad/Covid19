@@ -208,12 +208,12 @@ namespace Covid19Project
                 dr = suspectDataGrid.Rows[i];
                 if (dr.Selected == true)
                 {
-                    cin = suspectDataGrid.Rows[i].Cells[1].Value.ToString();
-                    nom = suspectDataGrid.Rows[i].Cells[2].Value.ToString();
-                    prenom = suspectDataGrid.Rows[i].Cells[3].Value.ToString();
-                    adresse = suspectDataGrid.Rows[i].Cells[4].Value.ToString();
-                    numTel = suspectDataGrid.Rows[i].Cells[5].Value.ToString();
-                    sexe = suspectDataGrid.Rows[i].Cells[7].Value.ToString();
+                    cin = suspectDataGrid.Rows[i].Cells[0].Value.ToString();
+                    nom = suspectDataGrid.Rows[i].Cells[1].Value.ToString();
+                    prenom = suspectDataGrid.Rows[i].Cells[2].Value.ToString();
+                    adresse = suspectDataGrid.Rows[i].Cells[3].Value.ToString();
+                    numTel = suspectDataGrid.Rows[i].Cells[4].Value.ToString();
+                    sexe = suspectDataGrid.Rows[i].Cells[5].Value.ToString();
                 }
             }
             citoyen = new Citoyen(nom, prenom, age, sexe, cin, adresse, numTel);
@@ -271,6 +271,31 @@ namespace Covid19Project
                 cnn.Close();
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Mettre en quarantine
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow dr = new DataGridViewRow();
+            for (int i = 0; i < patientDataGrid.Rows.Count; i++)
+            {
+                if (dr.Selected == true)
+                {
+                    cin = patientDataGrid.Rows[i].Cells[1].Value.ToString();
+                }
+            }
+            try
+            {
+                cnn.Open();
+                cmd.CommandText = "update patient set enquarantine = true Where cinpatient = '" + cin + "';";
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                fillDataGrid(patientDataGrid, "patient");
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

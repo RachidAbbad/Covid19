@@ -318,6 +318,7 @@
             this.button6.TabIndex = 10;
             this.button6.Text = "Mettre En Quarantine";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // patientDataGrid
             // 
@@ -418,11 +419,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.menuPanel);
+            this.Controls.Add(this.patientPanel);
             this.Controls.Add(this.vaccinePanel);
             this.Controls.Add(this.retabliePanel);
             this.Controls.Add(this.citoyenPanel);
             this.Controls.Add(this.suspectPanel);
-            this.Controls.Add(this.patientPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

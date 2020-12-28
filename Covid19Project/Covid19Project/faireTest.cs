@@ -86,7 +86,7 @@ namespace Covid19Project
                     else if(resultatTestCombobox.Text == "Positive")
                     {
                         cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + typeTestCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', TRUE);" +
-                            "Insert into patient(cinpatient) values('" + cin + "');" +
+                            "Insert into patient(cinpatient,enquarantine) values('" + cin + "',false);" +
                             "Delete From Suspect where cinsuspect = '" + cin + "';" +
                             "update citoyen set gravite = 'Haute' Where cincitoyen = '" + cin + "';";
                         cmd.ExecuteNonQuery();

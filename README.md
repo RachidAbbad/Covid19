@@ -2,6 +2,13 @@
 
 Dans ce projet avec Mr.Hachmoud ```@AdilHachmoud``` nous allons travailler sur la simulation d'un système d'information qui va de permettre aux autorités sanitaires d’assurer le suivi et le contrôle de la propagation de la pandémie covid 19.
 
+## Diagramme de DB
+![Diagramme de Classe](https://i.ibb.co/MGmVsfW/mcd.png)
+## Diagramme de Classe
+![Diagramme de Classe](https://i.ibb.co/qgfF1YY/diag-Classe.png)
+## Diagramme d'état-transition
+![Diagramme de Classe](https://i.ibb.co/sHtF7z6/d-iag-Etat.png)
+
 ## Outils utilisés
 
 - VS 2017

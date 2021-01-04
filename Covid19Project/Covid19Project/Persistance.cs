@@ -39,52 +39,102 @@ namespace Covid19Project
         //Suspect
         public void insertSuspect(string cin)
         {
-            cmd.CommandText = "INSERT INTO suspect(cinsuspect) VALUES ('" + cin + "');";
-            cmd.ExecuteNonQuery();
-            changeGravite(cin, "Moyen");
-            MessageBox.Show("Le citoyen a été ajouté à la liste des suspects");
+            try
+            {
+                cmd.CommandText = "INSERT INTO suspect(cinsuspect) VALUES ('" + cin + "');";
+                cmd.ExecuteNonQuery();
+                changeGravite(cin, "Moyen");
+                MessageBox.Show("Le citoyen a été ajouté à la liste des suspects");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         public void deleteSuspect(string cin)
         {
-            cmd.CommandText = "Delete From Suspect where cinsuspect = '" + cin + "';";
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Le suspect n'est pas porteur du virus, il sera supprimé de la liste des suspects .");
+            try
+            {
+                cmd.CommandText = "Delete From Suspect where cinsuspect = '" + cin + "';";
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Le suspect sera supprimé de la liste des suspects .");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Patient
         public void insertPatient(string cin ,string dateTest)
         {
-            cmd.CommandText = "Insert into patient(cinpatient,enquarantine) values('" + cin + "',false);" +//Ajouter au liste des patients
-                "Insert into historiquemaladie(cinPatient,dateMaladie) values('"+cin+"','"+dateTest+"');";
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.CommandText = "Insert into patient(cinpatient,enquarantine) values('" + cin + "',false);" +//Ajouter au liste des patients
+                "Insert into historiquemaladie(cinPatient,dateMaladie) values('" + cin + "','" + dateTest + "');";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Vacciné
         public void insertVaccine(string cin, string nomVaccin, string dateVaccination)
         {
-            cmd.CommandText = "INSERT INTO vaccine(cinVaccine,nomVaccin,dateVaccination) " +
+            try
+            {
+                cmd.CommandText = "INSERT INTO vaccine(cinVaccine,nomVaccin,dateVaccination) " +
                         "Values('" + cin + "', '" + nomVaccin + "', '" + dateVaccination + "');" +//Insert into liste du vaccinés
                         "Update carnetSanitaire set  faitvaccin = true,datevaccination ='" + dateVaccination + "' WHERE cincitoyen='" + cin + "';" +//Ajouter la vaccination au carnet sanitaire
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Le citoyen a été ajouté à la liste des vacciné");
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Le citoyen a été ajouté à la liste des vacciné");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Tests
         public void insertTest(string cin, string nomTest, string dateTest, string resultat)
         {
-            cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + nomTest + "', '" + dateTest + "', " + resultat + ");";//Inserer le test
-            cmd.ExecuteNonQuery();
+            try
+            {
+                cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + nomTest + "', '" + dateTest + "', " + resultat + ");";//Inserer le test
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Rétablies
         public void insertRetablie(string cin, string dateRecuperation)
         {
-            cmd.CommandText = "Delete From patient where cinpatient = '" + cin + "';" +
+            try
+            {
+                cmd.CommandText = "Delete From patient where cinpatient = '" + cin + "';" +
                             "Insert into retablie(cinretablie,dateretablie) values('" + cin + "','" + dateRecuperation + "');";
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Le patient n'est pas porteur du virus, il sera ajouté au liste des Rétablie.");
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Le patient n'est pas porteur du virus, il sera ajouté au liste des Rétablie.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Degré de gravité
         public void changeGravite(string cin,string etat)
-        {
-            cmd.CommandText = "update citoyen set gravite = '"+etat+"' Where cincitoyen = '" + cin + "'";
-            cmd.ExecuteNonQuery();
+        { 
+            try
+            {
+                cmd.CommandText = "update citoyen set gravite = '" + etat + "' Where cincitoyen = '" + cin + "'";
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

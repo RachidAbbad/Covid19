@@ -10,11 +10,31 @@ namespace Covid19Project
 {
     class Persistance
     {
-        private MySqlCommand cmd = new MySqlCommand();
+        private string serveur = "127.0.0.1";
+        private string user = "root";
+        private string pass = "";
+        private string db = "covid19";
+        private MySqlConnection cnn;
+        private MySqlCommand cmd;
         //Constructeur
         public Persistance(MySqlCommand _cmd)
         {
-            cmd = _cmd;
+            initConnection();
+        }
+        //Connection au serveur
+        public void initConnection()
+        {
+            string StringConn = "server=" + serveur + ";database=" + db + ";uid=" + user + ";pwd=" + pass + ";";
+            cnn = new MySqlConnection(StringConn);
+            try
+            {
+                cnn.Open();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //Suspect
         public void insertSuspect(string cin)

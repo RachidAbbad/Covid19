@@ -14,25 +14,15 @@ namespace Covid19Project
 {
     public partial class faireTest : Form
     {
-        string cin;
-        DateTime dateTest;
-        string typeTest;
-        private MySqlConnection cnn;
+        private string cin, Etat;
+        MySqlConnection cnn;
         MySqlCommand cmd;
         MySqlDataAdapter sda;
-        private string Etat;
-        private Suspect suspect;
-        private Retablie retablie;
-        private Patient patient;
-        private Test test;
-        public faireTest(Citoyen _citoyen,MySqlConnection _cnn,string _etat)
+        Persistance pers;
+        public faireTest(string _cin,MySqlConnection _cnn,string _etat)
         {
             InitializeComponent();                                                      
-            cin = _citoyen.getCin();
-            if(Etat == "suspect")
-                suspect = new Suspect(_citoyen.getNom(), _citoyen.getPrenom(), _citoyen.getAge(), _citoyen.getSexe(), _citoyen.getCin(), _citoyen.getAdresse(), _citoyen.getNumTel());
-            else if(Etat == "patient")
-                patient = new Patient(_citoyen.getNom(), _citoyen.getPrenom(), _citoyen.getAge(), _citoyen.getSexe(), _citoyen.getCin(), _citoyen.getAdresse(), _citoyen.getNumTel());
+            cin = _cin;
             typeTestCombobox.Text = cin;
             cnn = _cnn;
             resultatTestCombobox.Text ="---Choisir Résultat---";
@@ -42,7 +32,6 @@ namespace Covid19Project
             citoyenInfoLabel.Text += " : " +cin;
             fillTypeTestCombobox();
         }
-        
         public void fillTypeTestCombobox()
         {
             cnn.Open();
@@ -57,72 +46,47 @@ namespace Covid19Project
             //Select The name of colum
             typeTestCombobox.ValueMember = "type";
             typeTestCombobox.DisplayMember = "type";
-            //name
-
             cnn.Close();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                cnn.Open();
-                if(Etat == "suspect")
+            pers  = new Persistance();
+            if (Etat == "suspect")
                 {
                     if(resultatTestCombobox.Text == "Negative")
                     {
-                        cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '"+typeTestCombobox.Text+ "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', FALSE);" +
-                            "Delete From Suspect where cinsuspect = '" + cin + "';" +
-                            "update citoyen set gravite = 'Faible' Where cincitoyen = '" + cin + "';";
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Le test a été ajouté avec succès \n Le suspect n'est pas porteur du virus, il sera supprimé de la liste des suspects .");
-                        test = new Test(typeTestCombobox.Text, false, dateTimePicker1.Value);
+                        pers.insertTest(cin, typeTestCombobox.Text, dateTimePicker1.Value.ToString("yyyy-MM-dd"), "False");
+                        pers.changeGravite(cin, "Faible");
                     }
                     else if(resultatTestCombobox.Text == "Positive")
                     {
-                        cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + typeTestCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', TRUE);" +
-                            "Insert into patient(cinpatient,enquarantine) values('" + cin + "',false);" +
-                            "Delete From Suspect where cinsuspect = '" + cin + "';" +
-                            "update citoyen set gravite = 'Haute' Where cincitoyen = '" + cin + "';";
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Le test a été ajouté avec succès \n Le suspect est passé à la liste des patients .");
-                        test = new Test(typeTestCombobox.Text, true, dateTimePicker1.Value);
+                        pers.insertPatient(cin, dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                        pers.insertTest(cin, typeTestCombobox.Text, dateTimePicker1.Value.ToString("yyyy-MM-dd"), "True");
+                        pers.changeGravite(cin, "Haute");
                     }
+                    pers.deleteSuspect(cin);
                     this.Close();
                 }else if(Etat == "patient")
                 {
                     if (resultatTestCombobox.Text == "Negative")
                     {
-                        cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + typeTestCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', FALSE);" +
-                            "Delete From patient where cinpatient = '" + cin + "';" +
-                            "Insert into retablie(cinretablie,dateretablie) values('"+cin+"','"+ dateTimePicker1.Value.ToString("yyyy-MM-dd") + "');" +
-                            "update citoyen set gravite = 'Faible' Where cincitoyen = '" + cin + "';";
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Le test a été ajouté avec succès \n Le patient n'est pas porteur du virus, il sera ajouté au liste des Rétablie.");
-                        test = new Test(typeTestCombobox.Text, false, dateTimePicker1.Value);
+                        pers.insertTest(cin, typeTestCombobox.Text, dateTimePicker1.Value.ToString("yyyy-MM-dd"), "False");
+                        pers.insertRetablie(cin,dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                        pers.deletePatient(cin);
+                        pers.changeGravite(cin, "Faible");
                     }
                     else if (resultatTestCombobox.Text == "Positive")
                     {
-                        cmd.CommandText = "INSERT INTO test(cin,nomtest, datetest, resultat) VALUES('" + cin + "', '" + typeTestCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "', TRUE);";
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("Le test a été ajouté avec succès \n Le patient est toujours porteur du virus.");
-                        test = new Test(typeTestCombobox.Text, true, dateTimePicker1.Value);
+                        pers.insertTest(cin, typeTestCombobox.Text, dateTimePicker1.Value.ToString("yyyy-MM-dd"), "True");
+                        MessageBox.Show("Le patient est toujours porteur du virus.");
                     }
                     this.Close();
-                    cnn.Close();
+                    
                 }
-                
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
     }
 }

@@ -81,6 +81,7 @@
     <Compile Include="faireTest.Designer.cs">
       <DependentUpon>faireTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistance.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ajouterVaccine.resx">

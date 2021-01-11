@@ -20,12 +20,12 @@ namespace Covid19Project
         private string pass = "";
         private string db = "covid19";
         private MySqlConnection cnn ;
+        private int timeLeft = 10;
         MySqlCommand cmd;
         MySqlDataAdapter sda;
-        private Citoyen citoyen;
-        string cin, nom, prenom, adresse, sexe, numTel;
-        int age;
-        DateTime date = new DateTime();
+        string cin;
+        Persistance persistance_instance ;
+
 
         public void Connection()
         {
@@ -59,12 +59,20 @@ namespace Covid19Project
             citoyenPanel.Visible = true;
             vaccinePanel.Visible = false;
             Connection();
-            fillDataGrid(citoyenDataGrid,"citoyen");
-            fillDataGrid(patientDataGrid,"patient");
-            fillDataGrid(retablieDataGrid,"retablie");
-            fillDataGrid(suspectDataGrid,"suspect");
-            fillDataGrid(vaccineDataGrid,"vaccine");
             DisableButtons();
+            persistance_instance = new Persistance();
+            remplir_Data_Grid();
+            timer1.Interval = 1000;
+            timer1.Enabled = true;
+            timer1.Stop();
+        }
+        private void remplir_Data_Grid()
+        {
+            persistance_instance.fillDataGrid(citoyenDataGrid, "citoyen");
+            persistance_instance.fillDataGrid(patientDataGrid, "patient");
+            persistance_instance.fillDataGrid(retablieDataGrid, "retablie");
+            persistance_instance.fillDataGrid(suspectDataGrid, "suspect");
+            persistance_instance.fillDataGrid(vaccineDataGrid, "vaccine");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,7 +82,7 @@ namespace Covid19Project
             retabliePanel.Visible = false;
             citoyenPanel.Visible = true;
             vaccinePanel.Visible = false;
-            fillDataGrid(citoyenDataGrid, "citoyen");
+            persistance_instance.fillDataGrid(citoyenDataGrid, "citoyen");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -84,7 +92,7 @@ namespace Covid19Project
             retabliePanel.Visible = false;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = false;
-            fillDataGrid(suspectDataGrid, "suspect");
+            persistance_instance.fillDataGrid(suspectDataGrid, "suspect");
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -94,7 +102,7 @@ namespace Covid19Project
             retabliePanel.Visible = false;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = false;
-            fillDataGrid(patientDataGrid, "patient");
+            persistance_instance.fillDataGrid(patientDataGrid, "patient");
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -104,7 +112,7 @@ namespace Covid19Project
             retabliePanel.Visible = true;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = false;
-            fillDataGrid(retablieDataGrid, "retablie");
+            persistance_instance.fillDataGrid(retablieDataGrid, "retablie");
         }
 
         private void button16_Click(object sender, EventArgs e)
@@ -114,68 +122,11 @@ namespace Covid19Project
             retabliePanel.Visible = false;
             citoyenPanel.Visible = false;
             vaccinePanel.Visible = true;
-            fillDataGrid(vaccineDataGrid, "vaccine");
+            persistance_instance.fillDataGrid(vaccineDataGrid, "vaccine");
         }
 
         //Afficher les données de BD en DatagridView
-        public void fillDataGrid(DataGridView d,string nameTable)
-        {
-            if(cnn.State.ToString() == "close")
-            cnn.Open();
-            if(d == citoyenDataGrid)
-            {
-                string cmdString = "select * from " + nameTable;
-                cmd = new MySqlCommand(cmdString, cnn);
-                sda = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                d.DataSource = dt;
-                for (int i = 0; i < citoyenDataGrid.Rows.Count; i++)
-                {
-                    if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Faible")
-                    {
-                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Green;
-                    }
-                    else if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Moyen")
-                    {
-                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Orange;
-                    }
-                    else if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Haute")
-                    {
-                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Red;
-                    }
-
-                }
-                cnn.Close();
-            }
-            else
-            {
-                string cmdString = "select * from " + nameTable + ",citoyen WHERE citoyen.cinCitoyen=" + nameTable + ".cin"+nameTable;
-                cmd = new MySqlCommand(cmdString, cnn);
-                sda = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                dt.Columns.Remove("cinCitoyen");
-                d.DataSource = dt;
-                for (int i = 0; i < citoyenDataGrid.Rows.Count; i++)
-                {
-                    if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Faible")
-                    {
-                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Green;
-                    }
-                    else if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Moyen")
-                    {
-                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Orange;
-                    }
-                    else if (citoyenDataGrid.Rows[i].Cells[7].Value?.ToString() == "Haute")
-                    {
-                        citoyenDataGrid.Rows[i].Cells[7].Style.BackColor = Color.Red;
-                    }
-
-                }
-            }
-            cnn.Close();
-        }
+        
 
         private void button5_Click(object sender, EventArgs e)
         {
@@ -187,16 +138,9 @@ namespace Covid19Project
                 if (dr.Selected == true)
                 {
                     cin = citoyenDataGrid.Rows[i].Cells[0].Value.ToString();
-                    nom = citoyenDataGrid.Rows[i].Cells[1].Value.ToString();
-                    prenom = citoyenDataGrid.Rows[i].Cells[2].Value.ToString();
-                    adresse = citoyenDataGrid.Rows[i].Cells[3].Value.ToString();
-                    numTel = citoyenDataGrid.Rows[i].Cells[4].Value.ToString();
-                    age = int.Parse(citoyenDataGrid.Rows[i].Cells[5].Value.ToString());
-                    sexe = citoyenDataGrid.Rows[i].Cells[6].Value.ToString();
                 }
             }
-            citoyen = new Citoyen(nom, prenom, age, sexe, cin, adresse, numTel);
-            ajouterVaccine ajout = new ajouterVaccine(citoyen,cnn);
+            ajouterVaccine ajout = new ajouterVaccine(cin,cnn);
             ajout.Show();
         }
 
@@ -209,15 +153,9 @@ namespace Covid19Project
                 if (dr.Selected == true)
                 {
                     cin = suspectDataGrid.Rows[i].Cells[0].Value.ToString();
-                    nom = suspectDataGrid.Rows[i].Cells[1].Value.ToString();
-                    prenom = suspectDataGrid.Rows[i].Cells[2].Value.ToString();
-                    adresse = suspectDataGrid.Rows[i].Cells[3].Value.ToString();
-                    numTel = suspectDataGrid.Rows[i].Cells[4].Value.ToString();
-                    sexe = suspectDataGrid.Rows[i].Cells[5].Value.ToString();
                 }
             }
-            citoyen = new Citoyen(nom, prenom, age, sexe, cin, adresse, numTel);
-            faireTest test = new faireTest(citoyen,cnn,"suspect");
+            faireTest test = new faireTest(cin,cnn,"suspect");
             test.Show();
         }
 
@@ -229,27 +167,14 @@ namespace Covid19Project
                 if (dr.Selected == true)
                 {
                     cin = patientDataGrid.Rows[i].Cells[1].Value.ToString();
-                    nom = patientDataGrid.Rows[i].Cells[2].Value.ToString();
-                    prenom = patientDataGrid.Rows[i].Cells[3].Value.ToString();
-                    adresse = patientDataGrid.Rows[i].Cells[4].Value.ToString();
-                    numTel = patientDataGrid.Rows[i].Cells[5].Value.ToString();
-                    sexe = patientDataGrid.Rows[i].Cells[7].Value.ToString();
                 }
             }
-            citoyen = new Citoyen(nom, prenom, age, sexe, cin, adresse, numTel);
-            faireTest test = new faireTest(citoyen,cnn,"patient");
+            faireTest test = new faireTest(cin,cnn,"patient");
             test.Show();
             
         }
-
-        private void ajoutVaccineVP_Click(object sender, EventArgs e)
-        {
-            ajouterVaccine ajout = new ajouterVaccine(cnn);
-            ajout.Show();
-        }
-
-        //Ajout au list du suspects (Changer l'etat)
-        private void button7_Click(object sender, EventArgs e)
+        //Ajout au list du suspects 
+        private void button7_Click(object sender, EventArgs e)//Solved
         {
             string cin = null;
             DataGridViewRow dr = new DataGridViewRow();
@@ -261,19 +186,8 @@ namespace Covid19Project
                     cin = citoyenDataGrid.Rows[i].Cells[0].Value.ToString();
                 }
             }
-            try
-            {
-                cnn.Open();
-                cmd.CommandText = "INSERT INTO suspect(cinsuspect) VALUES ('" + cin + "');" +
-                    "update citoyen set gravite = 'Moyen' Where cincitoyen = '"+cin+"'";
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Le citoyen a été ajouté à la liste des suspects");
-                cnn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            persistance_instance.insertSuspect(cin);
+            persistance_instance.changeGravite(cin, "Moyen");
         }
 
         //Mettre en quarantine
@@ -287,30 +201,16 @@ namespace Covid19Project
                     cin = patientDataGrid.Rows[i].Cells[1].Value.ToString();
                 }
             }
-            try
-            {
-                cnn.Open();
-                cmd.CommandText = "update patient set enquarantine = true Where cinpatient = '" + cin + "';";
-                cmd.ExecuteNonQuery();
-                cnn.Close();
-                fillDataGrid(patientDataGrid, "patient");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            persistance_instance.fillDataGrid(patientDataGrid, "patient");
+            persistance_instance.Mettre_Quarantine(cin);
+            timer1.Start();
         }
 
         //Actualiser les dataGrid contenu
         private void Form1_Activated(object sender, EventArgs e)
         {
-            fillDataGrid(citoyenDataGrid, "citoyen");
-            fillDataGrid(patientDataGrid, "patient");
-            fillDataGrid(retablieDataGrid, "retablie");
-            fillDataGrid(suspectDataGrid, "suspect");
-            fillDataGrid(vaccineDataGrid, "vaccine");
+            remplir_Data_Grid();
         }
-
         //Desiactiver La MOdificattion en DataGridView
         private void DisableEditData()
         {
@@ -355,7 +255,7 @@ namespace Covid19Project
                     DateVaccination = dt.Rows[0]["datevaccination"].ToString();
                 }
             }
-            carnetSanitaire carnet = new carnetSanitaire(cin, faitvaccin, DateVaccination);
+            carnetSanitaire carnet = new carnetSanitaire(cin, faitvaccin, DateVaccination,cnn);
             carnet.Show();
         }
 
@@ -377,6 +277,20 @@ namespace Covid19Project
                 button10.Enabled = true;
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timeRestantQuarantine.Text =  timeLeft.ToString()+" Sec";
+            timeLeft -= 1;
+
+            if (timeLeft < 0)
+            {
+                timer1.Stop();
+                faireTest test = new faireTest(cin,cnn,"patient");
+                test.Show();
+                timeLeft = 10;
+            }
         }
     }
 }

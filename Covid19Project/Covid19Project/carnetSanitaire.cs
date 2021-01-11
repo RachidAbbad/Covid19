@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 
 namespace Covid19Project
@@ -15,14 +9,18 @@ namespace Covid19Project
         private string cin;
         private string faitvaccin;
         private string DateVaccination;
-
-        public carnetSanitaire(string _cin, string _faitvaccin, string _DateVaccination)
+        MySqlCommand cmd;
+        MySqlConnection cnn;
+        MySqlDataReader myReader;
+        public carnetSanitaire(string _cin, string _faitvaccin, string _DateVaccination, MySqlConnection _cnn)
         {
+            InitializeComponent();
             cin = _cin;
             faitvaccin = _faitvaccin;
-            DateVaccination = _DateVaccination.Substring(0,10);
-            InitializeComponent();
-            fillLabels();
+            cnn = _cnn;
+            DateVaccination = _DateVaccination;//.Substring(0,9);
+            fillLabelVaccin();
+            fillLabelHistorique();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,7 +28,7 @@ namespace Covid19Project
             this.Close();
         }
 
-        private void fillLabels()
+        private void fillLabelVaccin()
         {
             cinLabel.Text += cin;
             if (faitvaccin == "0")
@@ -38,6 +36,26 @@ namespace Covid19Project
             else if(faitvaccin == "1")
                 faitvaccinLabel.Text = "Vaccin Fait";
             datevaccinationLabel.Text = DateVaccination;
+        }
+        private void fillLabelHistorique()
+        {
+            try
+            {
+                cnn.Open();
+                cmd = new MySqlCommand("Select DateMaladie FROM historiquemaladie WHERE cinPatient='" + cin + "'",cnn);
+                myReader = cmd.ExecuteReader();
+                while (myReader.Read())
+                {
+                    historiqueLabel.Text += "\n" + myReader.GetString(0).Substring(0,9);
+                    Console.WriteLine(myReader.ToString());
+                }
+                myReader.Close();
+                cnn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

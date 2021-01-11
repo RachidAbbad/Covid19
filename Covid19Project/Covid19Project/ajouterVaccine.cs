@@ -15,28 +15,19 @@ namespace Covid19Project
     public partial class ajouterVaccine : Form
     {
         private string cin;
-        private DateTime dateVaccination;
-        string typeVaccin;
-        private MySqlConnection cnn;
+        MySqlConnection cnn;
         MySqlCommand cmd;
         MySqlDataAdapter sda;
-        Vaccine vaccine;
+        Persistance pers ;
 
-        public ajouterVaccine(MySqlConnection _cnn)
-        {
-            InitializeComponent();
-            cnn = _cnn;
-            fillVaccinCombobox();
-        }
-
-        public ajouterVaccine(Citoyen _citoyen,MySqlConnection _cnn)
+        public ajouterVaccine(string _cin,MySqlConnection _cnn)
         { 
             InitializeComponent();
-            cin = _citoyen.getCin();
+            cin = _cin;
             cnn = _cnn;
             cinCombobox.Text = cin;
             fillVaccinCombobox();
-            vaccine = new Vaccine(_citoyen.getNom(),_citoyen.getPrenom(),_citoyen.getAge(),_citoyen.getSexe(),_citoyen.getCin(),_citoyen.getAdresse(),_citoyen.getNumTel());
+            pers = new Persistance();
         }
 
         public void fillVaccinCombobox()
@@ -46,15 +37,11 @@ namespace Covid19Project
             sda = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             sda.Fill(dt);
-
             //Select Data source of every Combobox
             vaccinCombobox.DataSource = dt;
-
             //Select The name of colum
             vaccinCombobox.ValueMember = "nomVaccin";
             vaccinCombobox.DisplayMember = "nomVaccin";
-            //name
-
             cnn.Close();
         }
 
@@ -67,24 +54,9 @@ namespace Covid19Project
         {
             if(vaccinCombobox.Text != "" && cinCombobox.Text != "")
             {
-                try
-                {
-                    cnn.Open();
-                    cmd.CommandText = "INSERT INTO vaccine(cinVaccine,nomVaccin,dateVaccination) " +
-                        "Values('" + cin + "', '"+ vaccinCombobox.Text + "', '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "');" +
-                        "Update carnetSanitaire set  faitvaccin = true,datevaccination ='" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + "' WHERE cincitoyen='" + cin + "';" +
-                        "update citoyen set gravite = 'Faible' Where cincitoyen = '"+cin+"';" +
-                        "DELETE FROM SUSPECT WHERE cinsuspect = '"+cin+"'";
-                    cmd.ExecuteNonQuery();
-                    vaccine.setDateVaccination(dateTimePicker1.Value);
-                    MessageBox.Show("Le citoyen a été ajouté à la liste des vacciné");
+                    pers.insertVaccine(cin, vaccinCombobox.Text, dateTimePicker1.Value.ToString("yyyy-MM-dd"));
+                    pers.changeGravite(cin, "Faible");
                     this.Close();
-                    cnn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }     
         }
     }

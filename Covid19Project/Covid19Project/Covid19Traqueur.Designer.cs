@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.button16 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -47,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.patientPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.timeRestantQuarantine = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.patientDataGrid = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,6 +60,7 @@
             this.vaccinePanel = new System.Windows.Forms.Panel();
             this.vaccineDataGrid = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuPanel.SuspendLayout();
             this.citoyenPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.citoyenDataGrid)).BeginInit();
@@ -300,6 +304,8 @@
             this.patientPanel.AllowDrop = true;
             this.patientPanel.BackColor = System.Drawing.Color.MediumTurquoise;
             this.patientPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.patientPanel.Controls.Add(this.label7);
+            this.patientPanel.Controls.Add(this.timeRestantQuarantine);
             this.patientPanel.Controls.Add(this.button6);
             this.patientPanel.Controls.Add(this.patientDataGrid);
             this.patientPanel.Controls.Add(this.label4);
@@ -308,6 +314,25 @@
             this.patientPanel.Name = "patientPanel";
             this.patientPanel.Size = new System.Drawing.Size(1003, 469);
             this.patientPanel.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(441, 11);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(350, 21);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Temps restant pour terminer la quarantaine :";
+            // 
+            // timeRestantQuarantine
+            // 
+            this.timeRestantQuarantine.AutoSize = true;
+            this.timeRestantQuarantine.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeRestantQuarantine.Location = new System.Drawing.Point(797, 11);
+            this.timeRestantQuarantine.Name = "timeRestantQuarantine";
+            this.timeRestantQuarantine.Size = new System.Drawing.Size(0, 21);
+            this.timeRestantQuarantine.TabIndex = 11;
             // 
             // button6
             // 
@@ -411,6 +436,10 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Liste des Vaccinés";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,11 +448,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.menuPanel);
+            this.Controls.Add(this.citoyenPanel);
+            this.Controls.Add(this.suspectPanel);
             this.Controls.Add(this.patientPanel);
             this.Controls.Add(this.vaccinePanel);
             this.Controls.Add(this.retabliePanel);
-            this.Controls.Add(this.citoyenPanel);
-            this.Controls.Add(this.suspectPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -483,6 +512,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label timeRestantQuarantine;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label7;
     }
 }
 

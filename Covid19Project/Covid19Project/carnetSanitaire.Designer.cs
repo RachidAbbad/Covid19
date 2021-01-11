@@ -34,11 +34,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.datevaccinationLabel = new System.Windows.Forms.Label();
             this.faitvaccinLabel = new System.Windows.Forms.Label();
+            this.historiqueLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(123, 208);
+            this.button1.Location = new System.Drawing.Point(246, 197);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 46);
             this.button1.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             this.cinLabel.AutoSize = true;
             this.cinLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cinLabel.Location = new System.Drawing.Point(23, 53);
+            this.cinLabel.Location = new System.Drawing.Point(22, 19);
             this.cinLabel.Name = "cinLabel";
             this.cinLabel.Size = new System.Drawing.Size(217, 25);
             this.cinLabel.TabIndex = 1;
@@ -59,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 101);
+            this.label2.Location = new System.Drawing.Point(27, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 21);
             this.label2.TabIndex = 2;
@@ -68,7 +70,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 145);
+            this.label3.Location = new System.Drawing.Point(27, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(139, 21);
             this.label3.TabIndex = 3;
@@ -77,7 +79,7 @@
             // datevaccinationLabel
             // 
             this.datevaccinationLabel.AutoSize = true;
-            this.datevaccinationLabel.Location = new System.Drawing.Point(173, 145);
+            this.datevaccinationLabel.Location = new System.Drawing.Point(177, 128);
             this.datevaccinationLabel.Name = "datevaccinationLabel";
             this.datevaccinationLabel.Size = new System.Drawing.Size(34, 21);
             this.datevaccinationLabel.TabIndex = 5;
@@ -86,17 +88,36 @@
             // faitvaccinLabel
             // 
             this.faitvaccinLabel.AutoSize = true;
-            this.faitvaccinLabel.Location = new System.Drawing.Point(173, 101);
+            this.faitvaccinLabel.Location = new System.Drawing.Point(132, 84);
             this.faitvaccinLabel.Name = "faitvaccinLabel";
             this.faitvaccinLabel.Size = new System.Drawing.Size(34, 21);
             this.faitvaccinLabel.TabIndex = 4;
             this.faitvaccinLabel.Text = "----";
             // 
+            // historiqueLabel
+            // 
+            this.historiqueLabel.AutoSize = true;
+            this.historiqueLabel.Location = new System.Drawing.Point(347, 67);
+            this.historiqueLabel.Name = "historiqueLabel";
+            this.historiqueLabel.Size = new System.Drawing.Size(102, 21);
+            this.historiqueLabel.TabIndex = 6;
+            this.historiqueLabel.Text = "Historiques :";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(315, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(10, 100);
+            this.panel1.TabIndex = 7;
+            // 
             // carnetSanitaire
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 276);
+            this.ClientSize = new System.Drawing.Size(616, 269);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.historiqueLabel);
             this.Controls.Add(this.datevaccinationLabel);
             this.Controls.Add(this.faitvaccinLabel);
             this.Controls.Add(this.label3);
@@ -120,5 +141,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label datevaccinationLabel;
         private System.Windows.Forms.Label faitvaccinLabel;
+        private System.Windows.Forms.Label historiqueLabel;
+        private System.Windows.Forms.Panel panel1;
     }
 }

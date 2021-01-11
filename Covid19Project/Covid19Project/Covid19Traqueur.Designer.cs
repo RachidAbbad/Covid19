@@ -38,35 +38,36 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.citoyenPanel = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.citoyenDataGrid = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.suspectPanel = new System.Windows.Forms.Panel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.suspectDataGrid = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.patientPanel = new System.Windows.Forms.Panel();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
+            this.patientDataGrid = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.button13 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.retablieDataGrid = new System.Windows.Forms.DataGridView();
             this.retabliePanel = new System.Windows.Forms.Panel();
             this.vaccinePanel = new System.Windows.Forms.Panel();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.vaccineDataGrid = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.menuPanel.SuspendLayout();
             this.citoyenPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citoyenDataGrid)).BeginInit();
             this.suspectPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.suspectDataGrid)).BeginInit();
             this.patientPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.retablieDataGrid)).BeginInit();
             this.retabliePanel.SuspendLayout();
             this.vaccinePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vaccineDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPanel
@@ -178,7 +179,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(152, 24);
+            this.label1.Location = new System.Drawing.Point(259, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(635, 27);
             this.label1.TabIndex = 0;
@@ -187,7 +188,7 @@
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(638, 154);
+            this.button5.Location = new System.Drawing.Point(843, 153);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(153, 60);
             this.button5.TabIndex = 4;
@@ -199,22 +200,47 @@
             // 
             this.citoyenPanel.AllowDrop = true;
             this.citoyenPanel.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.citoyenPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.citoyenPanel.Controls.Add(this.button8);
             this.citoyenPanel.Controls.Add(this.button7);
-            this.citoyenPanel.Controls.Add(this.dataGridView1);
+            this.citoyenPanel.Controls.Add(this.citoyenDataGrid);
             this.citoyenPanel.Controls.Add(this.label3);
             this.citoyenPanel.Controls.Add(this.button5);
             this.citoyenPanel.Location = new System.Drawing.Point(217, 78);
             this.citoyenPanel.Name = "citoyenPanel";
-            this.citoyenPanel.Size = new System.Drawing.Size(803, 469);
+            this.citoyenPanel.Size = new System.Drawing.Size(1003, 469);
             this.citoyenPanel.TabIndex = 7;
             // 
-            // dataGridView1
+            // button8
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 46);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(613, 372);
-            this.dataGridView1.TabIndex = 9;
+            this.button8.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(843, 259);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(153, 60);
+            this.button8.TabIndex = 11;
+            this.button8.Text = "Afficher le carnet sanitaire";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // button7
+            // 
+            this.button7.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(843, 46);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(153, 60);
+            this.button7.TabIndex = 10;
+            this.button7.Text = "Ajouter au liste du suspects";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // citoyenDataGrid
+            // 
+            this.citoyenDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.citoyenDataGrid.Location = new System.Drawing.Point(13, 46);
+            this.citoyenDataGrid.Name = "citoyenDataGrid";
+            this.citoyenDataGrid.Size = new System.Drawing.Size(824, 372);
+            this.citoyenDataGrid.TabIndex = 9;
+            this.citoyenDataGrid.SelectionChanged += new System.EventHandler(this.ActivateButtons);
             // 
             // label3
             // 
@@ -230,21 +256,23 @@
             // 
             this.suspectPanel.AllowDrop = true;
             this.suspectPanel.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.suspectPanel.Controls.Add(this.dataGridView2);
+            this.suspectPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.suspectPanel.Controls.Add(this.suspectDataGrid);
             this.suspectPanel.Controls.Add(this.label2);
             this.suspectPanel.Controls.Add(this.button10);
             this.suspectPanel.Location = new System.Drawing.Point(217, 78);
             this.suspectPanel.Name = "suspectPanel";
-            this.suspectPanel.Size = new System.Drawing.Size(803, 469);
+            this.suspectPanel.Size = new System.Drawing.Size(1003, 469);
             this.suspectPanel.TabIndex = 8;
             // 
-            // dataGridView2
+            // suspectDataGrid
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(13, 46);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(613, 372);
-            this.dataGridView2.TabIndex = 9;
+            this.suspectDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.suspectDataGrid.Location = new System.Drawing.Point(13, 46);
+            this.suspectDataGrid.Name = "suspectDataGrid";
+            this.suspectDataGrid.Size = new System.Drawing.Size(824, 372);
+            this.suspectDataGrid.TabIndex = 9;
+            this.suspectDataGrid.SelectionChanged += new System.EventHandler(this.ActivateButtons);
             // 
             // label2
             // 
@@ -259,7 +287,7 @@
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(635, 46);
+            this.button10.Location = new System.Drawing.Point(843, 46);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(153, 60);
             this.button10.TabIndex = 4;
@@ -271,21 +299,35 @@
             // 
             this.patientPanel.AllowDrop = true;
             this.patientPanel.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.patientPanel.Controls.Add(this.dataGridView3);
+            this.patientPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.patientPanel.Controls.Add(this.button6);
+            this.patientPanel.Controls.Add(this.patientDataGrid);
             this.patientPanel.Controls.Add(this.label4);
             this.patientPanel.Controls.Add(this.button13);
             this.patientPanel.Location = new System.Drawing.Point(217, 78);
             this.patientPanel.Name = "patientPanel";
-            this.patientPanel.Size = new System.Drawing.Size(803, 469);
+            this.patientPanel.Size = new System.Drawing.Size(1003, 469);
             this.patientPanel.TabIndex = 9;
             // 
-            // dataGridView3
+            // button6
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(13, 46);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(613, 372);
-            this.dataGridView3.TabIndex = 9;
+            this.button6.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(843, 153);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(153, 60);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Mettre En Quarantine";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // patientDataGrid
+            // 
+            this.patientDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.patientDataGrid.Location = new System.Drawing.Point(13, 46);
+            this.patientDataGrid.Name = "patientDataGrid";
+            this.patientDataGrid.Size = new System.Drawing.Size(824, 372);
+            this.patientDataGrid.TabIndex = 9;
+            this.patientDataGrid.SelectionChanged += new System.EventHandler(this.ActivateButtons);
             // 
             // label4
             // 
@@ -300,11 +342,11 @@
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(638, 46);
+            this.button13.Location = new System.Drawing.Point(843, 46);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(153, 60);
             this.button13.TabIndex = 4;
-            this.button13.Text = "Faire Test PCR";
+            this.button13.Text = "Faire Test";
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -318,13 +360,13 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Liste des Rétablies";
             // 
-            // dataGridView4
+            // retablieDataGrid
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(13, 46);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(613, 372);
-            this.dataGridView4.TabIndex = 9;
+            this.retablieDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.retablieDataGrid.Location = new System.Drawing.Point(13, 46);
+            this.retablieDataGrid.Name = "retablieDataGrid";
+            this.retablieDataGrid.Size = new System.Drawing.Size(972, 372);
+            this.retablieDataGrid.TabIndex = 9;
             // 
             // retabliePanel
             // 
@@ -332,32 +374,32 @@
             this.retabliePanel.BackColor = System.Drawing.Color.MediumTurquoise;
             this.retabliePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.retabliePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.retabliePanel.Controls.Add(this.dataGridView4);
+            this.retabliePanel.Controls.Add(this.retablieDataGrid);
             this.retabliePanel.Controls.Add(this.label5);
-            this.retabliePanel.Location = new System.Drawing.Point(214, 78);
+            this.retabliePanel.Location = new System.Drawing.Point(217, 78);
             this.retabliePanel.Name = "retabliePanel";
-            this.retabliePanel.Size = new System.Drawing.Size(803, 469);
+            this.retabliePanel.Size = new System.Drawing.Size(1003, 469);
             this.retabliePanel.TabIndex = 10;
             // 
             // vaccinePanel
             // 
             this.vaccinePanel.AllowDrop = true;
             this.vaccinePanel.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.vaccinePanel.Controls.Add(this.dataGridView5);
+            this.vaccinePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.vaccinePanel.Controls.Add(this.vaccineDataGrid);
             this.vaccinePanel.Controls.Add(this.label6);
-            this.vaccinePanel.Controls.Add(this.button17);
             this.vaccinePanel.Location = new System.Drawing.Point(220, 78);
             this.vaccinePanel.Name = "vaccinePanel";
-            this.vaccinePanel.Size = new System.Drawing.Size(803, 469);
+            this.vaccinePanel.Size = new System.Drawing.Size(1003, 469);
             this.vaccinePanel.TabIndex = 11;
             // 
-            // dataGridView5
+            // vaccineDataGrid
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(13, 46);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(613, 372);
-            this.dataGridView5.TabIndex = 9;
+            this.vaccineDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.vaccineDataGrid.Location = new System.Drawing.Point(13, 46);
+            this.vaccineDataGrid.Name = "vaccineDataGrid";
+            this.vaccineDataGrid.Size = new System.Drawing.Size(969, 372);
+            this.vaccineDataGrid.TabIndex = 9;
             // 
             // label6
             // 
@@ -369,62 +411,42 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Liste des Vaccinés";
             // 
-            // button17
-            // 
-            this.button17.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(635, 47);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(153, 60);
-            this.button17.TabIndex = 6;
-            this.button17.Text = "Ajouter Vacciné";
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Microsoft Tai Le", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(638, 47);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(153, 60);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "Ajouter au liste du suspects";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 544);
+            this.ClientSize = new System.Drawing.Size(1232, 544);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel2);
             this.Controls.Add(this.menuPanel);
-            this.Controls.Add(this.suspectPanel);
             this.Controls.Add(this.patientPanel);
             this.Controls.Add(this.vaccinePanel);
             this.Controls.Add(this.retabliePanel);
             this.Controls.Add(this.citoyenPanel);
+            this.Controls.Add(this.suspectPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuPanel.ResumeLayout(false);
             this.citoyenPanel.ResumeLayout(false);
             this.citoyenPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.citoyenDataGrid)).EndInit();
             this.suspectPanel.ResumeLayout(false);
             this.suspectPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.suspectDataGrid)).EndInit();
             this.patientPanel.ResumeLayout(false);
             this.patientPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.patientDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.retablieDataGrid)).EndInit();
             this.retabliePanel.ResumeLayout(false);
             this.retabliePanel.PerformLayout();
             this.vaccinePanel.ResumeLayout(false);
             this.vaccinePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vaccineDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,26 +462,27 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel citoyenPanel;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView citoyenDataGrid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel suspectPanel;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView suspectDataGrid;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Panel patientPanel;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView patientDataGrid;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridView retablieDataGrid;
         private System.Windows.Forms.Panel retabliePanel;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Panel vaccinePanel;
-        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridView vaccineDataGrid;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button8;
     }
 }
 

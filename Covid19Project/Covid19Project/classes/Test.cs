@@ -11,6 +11,8 @@ public class Test
     private string Nom;
     private bool Resultat;
     private DateTime Date;
+    private string text;
+
 
     //constructeurs
     public Test(string _Nom, bool _Resultat, DateTime _Date)
@@ -19,6 +21,7 @@ public class Test
         Resultat = _Resultat;
         Date = _Date;
     }
+
 
     //Getters
     public string getNom()
